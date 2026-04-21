@@ -59,24 +59,6 @@ export function WhyCypress() {
         </div>
       </section>
 
-      {/* Section 3: Types of Cypress */}
-      <section className="bg-antique-cream py-24 px-4 md:px-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {[
-              { type: 'New Cypress', desc: 'Freshly harvested from managed wetlands. Vibrant orange, consistent texture, and perfect for modern structural projects.', img: IMGS.posts },
-              { type: 'Sinker Cypress', desc: 'Preserved under river silt for over a century. Features deep, moody colors and incredible stability due to mineral absorption.', img: IMGS.beams },
-              { type: 'Pecky Cypress', desc: 'Natural pocketing caused by a fungus while the tree was standing. Creates a stunning, honeycomb texture highly prized for decorative use.', img: IMGS.walls },
-            ].map((item, i) => (
-              <FadeUp key={item.type} delay={i * 0.1} className="bg-white border-b-4 border-cypress-amber p-8 shadow-xl space-y-6">
-                <img src={item.img} alt={item.type} className="w-full aspect-video object-cover" />
-                <h3 className="text-3xl font-serif text-mahogany">{item.type}</h3>
-                <p className="text-charred-edge leading-relaxed">{item.desc}</p>
-              </FadeUp>
-            ))}
-          </div>
-        </div>
-      </section>
     </div>
   );
 }

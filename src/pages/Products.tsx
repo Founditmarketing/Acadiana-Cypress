@@ -1,19 +1,41 @@
 import { FadeUp } from '../components/Layout';
 import { Phone } from 'lucide-react';
 
+// Properly matched to original site image assignments
 const IMGS = {
-  posts:        '/images/277500704_150867020723593_1182661073734601728_n.jpg',  // Porch posts & shutters
-  beams:        '/images/277228654_150868260723469_3021594272097539731_n.jpg',  // Dark columns
-  tg:           '/images/272837486_137899615353667_3663043520166976821_n.jpg',  // Pavilion T&G ceiling
-  walls:        '/images/289707034_171872228623072_7084350631170968445_n.jpg',  // Close-up T&G
-  pavilion:     '/images/287379839_168241782319450_842021099019914168_n.jpg',   // Cypress pavilion
-  construction: '/images/277754292_151991643944464_1444947564140231799_n.jpg',  // Under construction
-  legacy:       '/images/277175532_150868224056806_1401704873125698893_n.jpg',  // Daytime porch
-  millyard:     '/images/276160467_150867434056885_8706184336137964340_n.jpg',  // Porch at dusk
-  lantern:      '/images/277509230_150868394056789_1940454017148676648_n.jpg',  // Overhead cedar lantern
-  farmhouse:    '/images/277735522_151991600611135_2839161206587592020_n.jpg',  // White farmhouse
-  night:        '/images/277299687_150868094056819_131842279301177619_n.jpg',   // Night gable
-  browse:       '/images/276197468_151991650611130_2624331844763769457_n.jpg',  // Modern barn
+  // Flooring page: shows an actual porch deck/floor surface (golden hour planks)
+  flooringHero:  '/images/276160467_150867434056885_8706184336137964340_n.jpg',
+  flooringA:     '/images/277735522_151991600611135_2839161206587592020_n.jpg',  // White farmhouse porch floor
+  flooringB:     '/images/277500704_150867020723593_1182661073734601728_n.jpg',  // Porch deck & shutters
+  flooringC:     '/images/277175532_150868224056806_1401704873125698893_n.jpg',  // Cypress porch planks
+  flooringD:     '/images/277228654_150868260723469_3021594272097539731_n.jpg',  // Dark-stained porch
+
+  // Posts & Beams: structural timber posts on homes
+  beamsHero:     '/images/277228654_150868260723469_3021594272097539731_n.jpg',  // Dark cypress columns
+  beamsDetail:   '/images/277500704_150867020723593_1182661073734601728_n.jpg',  // Posts & shutters
+
+  // Tongue & Groove: interior ceiling close-up with overhead lantern (exact match to old site)
+  tgHero:        '/images/277509230_150868394056789_1940454017148676648_n.jpg',  // Overhead cedar T&G + lantern
+  tgA:           '/images/289707034_171872228623072_7084350631170968445_n.jpg',  // Close-up T&G grain
+  tgB:           '/images/272837486_137899615353667_3663043520166976821_n.jpg',  // Pavilion T&G ceiling
+  tgC:           '/images/277175532_150868224056806_1401704873125698893_n.jpg',  // Porch soffit
+  tgD:           '/images/277735522_151991600611135_2839161206587592020_n.jpg',  // Farmhouse soffit
+
+  // Walls & Ceilings: interior T&G paneling close-up
+  wallsHero:     '/images/289707034_171872228623072_7084350631170968445_n.jpg',  // T&G ceiling interior
+  wallsDetail:   '/images/272837486_137899615353667_3663043520166976821_n.jpg',  // Pavilion interior ceiling
+
+  // Hunting Blinds: outdoor timber frame structure (closest match)
+  blindsHero:    '/images/287379839_168241782319450_842021099019914168_n.jpg',   // Cypress pavilion frame
+  blindsA:       '/images/276197468_151991650611130_2624331844763769457_n.jpg',  // Timber frame barn
+  blindsB:       '/images/277754292_151991643944464_1444947564140231799_n.jpg',  // Construction frame
+
+  // Lumber: raw/construction cypress
+  lumberHero:    '/images/277754292_151991643944464_1444947564140231799_n.jpg',  // Under-construction frame
+
+  // Mantels: interior overhead cypress — ceiling lantern & detail
+  mantelsHero:   '/images/277509230_150868394056789_1940454017148676648_n.jpg',  // Overhead cedar & lantern
+  mantelsDetail: '/images/272837486_137899615353667_3663043520166976821_n.jpg',  // Warm interior ceiling
 };
 
 function StickyCallBar() {
@@ -34,7 +56,7 @@ export function Flooring() {
   return (
     <div className="pb-32">
       <section className="relative h-[40vh] flex items-center justify-center bg-mahogany overflow-hidden">
-        <img src={IMGS.farmhouse} className="absolute inset-0 w-full h-full object-cover opacity-60" alt="Cypress flooring porch" />
+        <img src={IMGS.flooringHero} className="absolute inset-0 w-full h-full object-cover opacity-65" alt="Cypress porch flooring at golden hour" />
         <div className="absolute inset-0 bg-gradient-to-t from-mahogany/70 via-transparent to-transparent" />
         <h1 className="relative text-6xl md:text-8xl font-display text-cypress-amber drop-shadow-2xl">Custom Flooring</h1>
       </section>
@@ -53,9 +75,9 @@ export function Flooring() {
            </FadeUp>
         </div>
         <div className="grid grid-cols-2 gap-4">
-           {[IMGS.millyard, IMGS.posts, IMGS.beams, IMGS.legacy].map((img, i) => (
+           {[IMGS.flooringHero, IMGS.flooringA, IMGS.flooringB, IMGS.flooringC].map((img, i) => (
              <FadeUp key={i} delay={i * 0.1}>
-                <img src={img} className="w-full aspect-square object-cover shadow-xl grayscale hover:grayscale-0 transition-all duration-700" alt={`Flooring project ${i + 1}`} />
+                <img src={img} className="w-full aspect-square object-cover shadow-xl grayscale hover:grayscale-0 transition-all duration-700" alt={`Cypress flooring project ${i + 1}`} />
              </FadeUp>
            ))}
         </div>
@@ -69,7 +91,7 @@ export function HuntingBlinds() {
   return (
     <div className="bg-antique-cream min-h-screen pb-32">
       <section className="relative h-[40vh] flex items-center justify-center bg-mahogany overflow-hidden">
-        <img src={IMGS.pavilion} className="absolute inset-0 w-full h-full object-cover opacity-55" alt="Cypress hunting pavilion" />
+        <img src={IMGS.blindsHero} className="absolute inset-0 w-full h-full object-cover opacity-60" alt="Cypress timber frame hunting pavilion" />
         <div className="absolute inset-0 bg-gradient-to-t from-mahogany/70 via-transparent to-transparent" />
         <h1 className="relative text-6xl md:text-8xl font-display text-cypress-amber drop-shadow-2xl">Hunting Blinds</h1>
       </section>
@@ -81,9 +103,9 @@ export function HuntingBlinds() {
            </p>
          </FadeUp>
          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-           {[IMGS.pavilion, IMGS.browse, IMGS.construction].map((img, i) => (
+           {[IMGS.blindsHero, IMGS.blindsA, IMGS.blindsB].map((img, i) => (
              <FadeUp key={i} delay={i * 0.1}>
-               <img src={img} className="w-full aspect-[3/4] object-cover shadow-2xl border-t-4 border-cypress-amber" alt="Cypress hunting structure" />
+               <img src={img} className="w-full aspect-[3/4] object-cover shadow-2xl border-t-4 border-cypress-amber" alt="Cypress outdoor structure" />
              </FadeUp>
            ))}
          </div>
@@ -97,7 +119,7 @@ export function Lumber() {
   return (
     <div className="bg-mahogany min-h-screen text-antique-cream pb-32">
       <section className="relative h-[40vh] flex items-center justify-center overflow-hidden">
-        <img src={IMGS.construction} className="absolute inset-0 w-full h-full object-cover opacity-55" alt="Cypress lumber construction" />
+        <img src={IMGS.lumberHero} className="absolute inset-0 w-full h-full object-cover opacity-55" alt="Cypress lumber construction" />
         <div className="absolute inset-0 bg-gradient-to-t from-mahogany/70 via-transparent to-transparent" />
         <h1 className="relative text-6xl md:text-8xl font-display text-cypress-amber drop-shadow-2xl">Raw Lumber</h1>
       </section>
@@ -124,7 +146,7 @@ export function Mantels() {
     <div className="bg-antique-cream min-h-screen pb-32 relative overflow-hidden">
       <div className="absolute top-1/3 left-1/2 -translate-x-1/2 font-display text-mahogany opacity-[0.03] text-[20vw] pointer-events-none rotate-3">Masterpiece</div>
       <section className="relative h-[40vh] flex items-center justify-center bg-mahogany overflow-hidden">
-        <img src={IMGS.lantern} className="absolute inset-0 w-full h-full object-cover opacity-55" alt="Cypress ceiling and lantern" />
+        <img src={IMGS.mantelsHero} className="absolute inset-0 w-full h-full object-cover opacity-60" alt="Cypress ceiling and lantern" />
         <div className="absolute inset-0 bg-gradient-to-t from-mahogany/70 via-transparent to-transparent" />
         <h1 className="relative text-6xl md:text-8xl font-display text-cypress-amber drop-shadow-2xl">Custom Mantels</h1>
       </section>
@@ -137,7 +159,7 @@ export function Mantels() {
          </FadeUp>
          <FadeUp delay={0.2}>
             <div className="relative group">
-               <img src={IMGS.tg} className="w-full shadow-2xl transition-all duration-700 brightness-90 group-hover:brightness-100" alt="Cypress ceiling detail" />
+               <img src={IMGS.mantelsDetail} className="w-full shadow-2xl transition-all duration-700 brightness-90 group-hover:brightness-100" alt="Cypress interior ceiling detail" />
                <div className="absolute inset-0 border-8 border-mahogany/10 group-hover:border-cypress-amber/20 transition-all pointer-events-none" />
             </div>
          </FadeUp>
@@ -151,7 +173,7 @@ export function PostsBeams() {
   return (
     <div className="pb-32">
       <section className="relative h-[40vh] flex items-center justify-center bg-mahogany overflow-hidden">
-        <img src={IMGS.beams} className="absolute inset-0 w-full h-full object-cover opacity-60" alt="Cypress posts and columns" />
+        <img src={IMGS.beamsHero} className="absolute inset-0 w-full h-full object-cover opacity-65" alt="Cypress posts and columns on home" />
         <div className="absolute inset-0 bg-gradient-to-t from-mahogany/70 via-transparent to-transparent" />
         <h1 className="relative text-6xl md:text-8xl font-display text-cypress-amber drop-shadow-2xl">Posts &amp; Beams</h1>
       </section>
@@ -173,7 +195,7 @@ export function PostsBeams() {
             </div>
          </FadeUp>
          <FadeUp delay={0.2} className="relative aspect-square">
-            <img src={IMGS.posts} className="w-full h-full object-cover shadow-2xl" alt="Structural cypress beams" />
+            <img src={IMGS.beamsDetail} className="w-full h-full object-cover shadow-2xl" alt="Cypress structural posts on porch" />
          </FadeUp>
       </section>
       <StickyCallBar />
@@ -185,7 +207,7 @@ export function TongueGroove() {
   return (
     <div className="bg-mahogany min-h-screen text-antique-cream pb-32">
       <section className="relative h-[40vh] flex items-center justify-center overflow-hidden">
-        <img src={IMGS.tg} className="absolute inset-0 w-full h-full object-cover opacity-55" alt="Cypress tongue and groove ceiling" />
+        <img src={IMGS.tgHero} className="absolute inset-0 w-full h-full object-cover opacity-60" alt="Cypress tongue and groove ceiling with lantern" />
         <div className="absolute inset-0 bg-gradient-to-t from-mahogany/70 via-transparent to-transparent" />
         <h1 className="relative text-6xl md:text-8xl font-display text-cypress-amber drop-shadow-2xl">Tongue &amp; Groove</h1>
       </section>
@@ -197,9 +219,9 @@ export function TongueGroove() {
             </p>
          </FadeUp>
          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-           {[IMGS.tg, IMGS.walls, IMGS.lantern, IMGS.legacy].map((img, i) => (
+           {[IMGS.tgHero, IMGS.tgA, IMGS.tgB, IMGS.tgC].map((img, i) => (
              <FadeUp key={i} delay={i * 0.1}>
-                <img src={img} className="w-full aspect-square object-cover border-b-2 border-cypress-amber shadow-xl" alt="Cypress T&G milling detail" />
+                <img src={img} className="w-full aspect-square object-cover border-b-2 border-cypress-amber shadow-xl" alt="Cypress T&G ceiling detail" />
              </FadeUp>
            ))}
          </div>
@@ -213,13 +235,13 @@ export function WallsCeilings() {
   return (
     <div className="bg-antique-cream min-h-screen pb-32">
       <section className="relative h-[40vh] flex items-center justify-center bg-mahogany overflow-hidden">
-        <img src={IMGS.walls} className="absolute inset-0 w-full h-full object-cover opacity-55" alt="Cypress walls and ceilings" />
+        <img src={IMGS.wallsHero} className="absolute inset-0 w-full h-full object-cover opacity-60" alt="Cypress wall and ceiling paneling" />
         <div className="absolute inset-0 bg-gradient-to-t from-mahogany/70 via-transparent to-transparent" />
         <h1 className="relative text-6xl md:text-8xl font-display text-cypress-amber drop-shadow-2xl">Walls &amp; Ceilings</h1>
       </section>
       <section className="max-w-7xl mx-auto py-24 px-4 md:px-8 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
          <div className="relative aspect-video lg:aspect-square order-2 lg:order-1">
-            <img src={IMGS.tg} className="w-full h-full object-cover shadow-2xl border-l-[1rem] border-mahogany" alt="Cypress interior paneling" />
+            <img src={IMGS.wallsDetail} className="w-full h-full object-cover shadow-2xl border-l-[1rem] border-mahogany" alt="Cypress interior ceiling" />
          </div>
          <FadeUp className="space-y-8 order-1 lg:order-2">
             <h2 className="text-4xl font-serif text-mahogany">Warmth in Every Plank</h2>

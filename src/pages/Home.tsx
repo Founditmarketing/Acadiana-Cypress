@@ -54,7 +54,7 @@ export default function Home() {
             The King of Lumber
           </motion.h1>
 
-          <div className="flex flex-col lg:flex-row items-center lg:items-start space-y-12 lg:space-y-0 lg:space-x-16 max-w-5xl">
+          <div className="flex flex-col lg:flex-row items-end space-y-12 lg:space-y-0 lg:space-x-16 max-w-5xl">
             <FadeUp delay={0.4} className="text-center lg:text-left space-y-8">
               <p className="text-antique-cream text-2xl md:text-3xl font-serif leading-tight">
                 Water-Resistant. Decay-Resistant. <br />
@@ -76,7 +76,7 @@ export default function Home() {
               </div>
             </FadeUp>
 
-            {/* Quick Feature Grid */}
+            {/* Quick Feature Grid — self-end keeps bottom flush with buttons */}
             <div className="hidden md:grid grid-cols-2 gap-6 w-full lg:w-96">
                <div className="bg-cypress-amber/20 border border-cypress-amber/40 p-6 flex flex-col relative group overflow-hidden">
                   <div className="absolute inset-0 bg-cypress-amber opacity-0 group-hover:opacity-10 transition-opacity" />
@@ -159,12 +159,12 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
-              { name: 'Flooring', image: IMGS.flooring, path: '/product/flooring' },
-              { name: 'Beams', image: IMGS.walls, path: '/product/posts-beams' },
-              { name: 'Mantels', image: IMGS.lantern, path: '/product/mantels' },
-              { name: 'Tongue & Groove', image: IMGS.tg, path: '/product/tongue-groove' },
-              { name: 'Lumber', image: IMGS.construction, path: '/product/lumber' },
-              { name: 'Hunting Blinds', image: IMGS.pavilion, path: '/product/hunting-blinds' },
+              { name: 'Flooring',        image: IMGS.millyard,     path: '/product/flooring' },
+              { name: 'Posts & Beams',   image: IMGS.beams,         path: '/product/posts-beams' },
+              { name: 'Mantels',         image: IMGS.lantern,       path: '/product/mantels' },
+              { name: 'Tongue & Groove', image: IMGS.tg,            path: '/product/tongue-groove' },
+              { name: 'Lumber',          image: IMGS.construction,  path: '/product/lumber' },
+              { name: 'Hunting Blinds',  image: IMGS.pavilion,      path: '/product/hunting-blinds' },
             ].map((cat, i) => (
               <FadeUp key={cat.name} delay={i * 0.1}>
                 <Link to={cat.path} className="group block relative aspect-video overflow-hidden border-b-4 border-cypress-amber">
