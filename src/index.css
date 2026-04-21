@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-cypress-amber: #D46A25;
+  --color-milled-glow: #E28C40;
+  --color-mahogany: #2A1308;
+  --color-antique-cream: #FAF4EB;
+  --color-charred-edge: #4A2B1B;
+
+  --font-display: "Great Vibes", cursive;
+  --font-serif: "Playfair Display", serif;
+  --font-sans: "Lato", sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-antique-cream text-charred-edge font-sans selection:bg-cypress-amber/30;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif font-bold text-mahogany;
+  }
+
+  .font-display {
+    @apply font-display;
+  }
+}
+
+@layer utilities {
+  .text-glow {
+    text-shadow: 0 0 20px rgba(226, 140, 64, 0.3);
+  }
+  .bg-hero-gradient {
+    background: radial-gradient(circle at center, var(--color-milled-glow) 0%, var(--color-mahogany) 100%);
+  }
+}
