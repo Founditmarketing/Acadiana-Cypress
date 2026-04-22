@@ -1,42 +1,47 @@
 import { FadeUp } from '../components/Layout';
 import { Phone } from 'lucide-react';
 
-// Properly matched to original site image assignments
+// Images sourced directly from each product page on acadiana-cypress.com
 const IMGS = {
-  // Flooring page: shows an actual porch deck/floor surface (golden hour planks)
-  flooringHero:  '/images/276160467_150867434056885_8706184336137964340_n.jpg',
-  flooringA:     '/images/277735522_151991600611135_2839161206587592020_n.jpg',  // White farmhouse porch floor
-  flooringB:     '/images/277500704_150867020723593_1182661073734601728_n.jpg',  // Porch deck & shutters
-  flooringC:     '/images/277175532_150868224056806_1401704873125698893_n.jpg',  // Cypress porch planks
-  flooringD:     '/images/277228654_150868260723469_3021594272097539731_n.jpg',  // Dark-stained porch
+  // Flooring — verified actual installed floor photos only
+  flooringHero:  '/images/358097624_299830609236411_8765642360038772533_n.jpg',  // Glossy wood floor, modern interior
+  flooringA:     '/images/IMG_4832.png',   // Wide-plank floor, rustic dining room
+  flooringB:     '/images/IMG_8484.png',   // Sinker cypress character floor, dark streaks
 
-  // Posts & Beams: structural timber posts on homes
-  beamsHero:     '/images/277228654_150868260723469_3021594272097539731_n.jpg',  // Dark cypress columns
-  beamsDetail:   '/images/277500704_150867020723593_1182661073734601728_n.jpg',  // Posts & shutters
+  // Hunting Blinds — actual hunting blind graphic from the OG page
+  blindsHero:    '/images/Untitled-design-2024-03-25T120136.563.png',
+  blindsA:       '/images/287379839_168241782319450_842021099019914168_n.jpg',    // Cypress pavilion frame
+  blindsB:       '/images/276197468_151991650611130_2624331844763769457_n.jpg',   // Timber frame structure
 
-  // Tongue & Groove: interior ceiling close-up with overhead lantern (exact match to old site)
-  tgHero:        '/images/277509230_150868394056789_1940454017148676648_n.jpg',  // Overhead cedar T&G + lantern
-  tgA:           '/images/289707034_171872228623072_7084350631170968445_n.jpg',  // Close-up T&G grain
-  tgB:           '/images/272837486_137899615353667_3663043520166976821_n.jpg',  // Pavilion T&G ceiling
-  tgC:           '/images/277175532_150868224056806_1401704873125698893_n.jpg',  // Porch soffit
-  tgD:           '/images/277735522_151991600611135_2839161206587592020_n.jpg',  // Farmhouse soffit
+  // Lumber — raw cypress lumber & slab photos from the lumber page
+  lumberHero:    '/images/285671601_167157409094554_5220638392272731801_n.jpg',   // Raw cypress lumber pile
+  lumberA:       '/images/840A4693.jpg',                                           // Sinker cypress slab
+  lumberB:       '/images/298758633_181487877661507_4343768937848960734_n.jpg',   // Cypress boards
+  lumberC:       '/images/87E92CDD-500F-46A0-A1DE-27884EF7D58A.jpg',             // Milled lumber
+  lumberD:       '/images/FEBEE285-FEA5-454C-87AF-9BCEE1B70E06.jpg',             // Cypress cuts
 
-  // Walls & Ceilings: interior T&G paneling close-up
-  wallsHero:     '/images/289707034_171872228623072_7084350631170968445_n.jpg',  // T&G ceiling interior
-  wallsDetail:   '/images/272837486_137899615353667_3663043520166976821_n.jpg',  // Pavilion interior ceiling
+  // Mantels — actual mantel photo from the mantels page
+  mantelsHero:   '/images/IMG_8108.jpg',
+  mantelsDetail: '/images/277509230_150868394056789_1940454017148676648_n.jpg',   // Ceiling & lantern
 
-  // Hunting Blinds: outdoor timber frame structure (closest match)
-  blindsHero:    '/images/287379839_168241782319450_842021099019914168_n.jpg',   // Cypress pavilion frame
-  blindsA:       '/images/276197468_151991650611130_2624331844763769457_n.jpg',  // Timber frame barn
-  blindsB:       '/images/277754292_151991643944464_1444947564140231799_n.jpg',  // Construction frame
+  // Posts & Beams — structural beam/post photos from the posts page
+  beamsHero:     '/images/IMG_3501.jpg',
+  beamsDetail:   '/images/840A4915.jpg',
+  beamsExtra:    '/images/IMG_6103.jpg',
 
-  // Lumber: raw/construction cypress
-  lumberHero:    '/images/277754292_151991643944464_1444947564140231799_n.jpg',  // Under-construction frame
+  // Tongue & Groove — T&G ceiling photos (OG page uses these)
+  tgHero:        '/images/277509230_150868394056789_1940454017148676648_n.jpg',   // Overhead T&G + lantern
+  tgA:           '/images/298758633_181487877661507_4343768937848960734_n.jpg',
+  tgB:           '/images/87E92CDD-500F-46A0-A1DE-27884EF7D58A.jpg',
+  tgC:           '/images/FEBEE285-FEA5-454C-87AF-9BCEE1B70E06.jpg',
 
-  // Mantels: interior overhead cypress — ceiling lantern & detail
-  mantelsHero:   '/images/277509230_150868394056789_1940454017148676648_n.jpg',  // Overhead cedar & lantern
-  mantelsDetail: '/images/272837486_137899615353667_3663043520166976821_n.jpg',  // Warm interior ceiling
+  // Walls & Ceilings — interior paneling photos from the walls page
+  wallsHero:     '/images/IMG_7713.jpg',
+  wallsDetail:   '/images/840A4895.jpg',
+  wallsA:        '/images/IMG_6881.jpg',
+  wallsB:        '/images/IMG_6944-scaled.jpg',
 };
+
 
 function StickyCallBar() {
   return (
@@ -74,13 +79,13 @@ export function Flooring() {
              </ul>
            </FadeUp>
         </div>
-        <div className="grid grid-cols-2 gap-4">
-           {[IMGS.flooringHero, IMGS.flooringA, IMGS.flooringB, IMGS.flooringC].map((img, i) => (
-             <FadeUp key={i} delay={i * 0.1}>
-                <img src={img} className="w-full aspect-square object-cover shadow-xl grayscale hover:grayscale-0 transition-all duration-700" alt={`Cypress flooring project ${i + 1}`} />
-             </FadeUp>
-           ))}
-        </div>
+         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {[IMGS.flooringHero, IMGS.flooringA, IMGS.flooringB].map((img, i) => (
+              <FadeUp key={i} delay={i * 0.1}>
+                 <img src={img} className="w-full aspect-square object-cover shadow-xl grayscale hover:grayscale-0 transition-all duration-700" alt={`Cypress flooring project ${i + 1}`} />
+              </FadeUp>
+            ))}
+         </div>
       </section>
       <StickyCallBar />
     </div>
@@ -102,13 +107,13 @@ export function HuntingBlinds() {
               Cypress is born in the swamp, and it belongs in the field. Our custom hunting blinds are rot-resistant and naturally camouflaged by the deep grain of the timber. This is the last blind you'll ever have to build.
            </p>
          </FadeUp>
-         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-           {[IMGS.blindsHero, IMGS.blindsA, IMGS.blindsB].map((img, i) => (
-             <FadeUp key={i} delay={i * 0.1}>
-               <img src={img} className="w-full aspect-[3/4] object-cover shadow-2xl border-t-4 border-cypress-amber" alt="Cypress outdoor structure" />
-             </FadeUp>
-           ))}
-         </div>
+         <FadeUp delay={0.2} className="flex justify-center">
+           <img
+             src={IMGS.blindsHero}
+             alt="Cypress hunting blind"
+             className="max-w-xl w-full shadow-2xl border-t-4 border-cypress-amber"
+           />
+         </FadeUp>
       </section>
       <StickyCallBar />
     </div>
@@ -130,6 +135,13 @@ export function Lumber() {
               We provide rough-cut or planed-all-four-sides (S4S) cypress lumber for any scale project. Our mill specializes in custom board feet dimensions and massive timber sourcing that big-box stores simply can't touch.
            </p>
          </FadeUp>
+         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+           {[IMGS.lumberHero, IMGS.lumberA, IMGS.lumberB, IMGS.lumberC].map((img, i) => (
+             <FadeUp key={i} delay={i * 0.1}>
+               <img src={img} className="w-full aspect-square object-cover shadow-xl border-b-2 border-cypress-amber" alt={`Cypress lumber ${i + 1}`} />
+             </FadeUp>
+           ))}
+         </div>
          <FadeUp delay={0.2} className="p-12 border-2 border-cypress-amber/20 text-center space-y-6">
             <h3 className="text-3xl font-serif">Pricing Note</h3>
             <p className="text-sm uppercase tracking-widest font-bold opacity-60">Custom Board Feet & Bulk Ordering</p>
@@ -177,26 +189,36 @@ export function PostsBeams() {
         <div className="absolute inset-0 bg-gradient-to-t from-mahogany/70 via-transparent to-transparent" />
         <h1 className="relative text-6xl md:text-8xl font-display text-cypress-amber drop-shadow-2xl">Posts &amp; Beams</h1>
       </section>
-      <section className="max-w-7xl mx-auto py-24 px-4 md:px-8 grid grid-cols-1 lg:grid-cols-2 gap-16">
+      <section className="max-w-7xl mx-auto py-24 px-4 md:px-8 grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
          <FadeUp className="space-y-8">
             <h2 className="text-4xl font-serif text-mahogany">Structural Integrity, Natural Beauty.</h2>
             <p className="text-lg text-charred-edge leading-relaxed">
                Cypress posts and beams carry the weight of a home with a warmth that steel and pine cannot replicate. We mill structural grade beams for luxury residential and commercial builds.
             </p>
-            <div className="grid grid-cols-2 gap-8 pt-8">
+            <div className="grid grid-cols-2 gap-8 pt-4">
                <div className="space-y-2">
                   <p className="font-sans font-bold uppercase tracking-widest text-[10px] text-cypress-amber">Available Sizes</p>
                   <p className="text-mahogany font-serif text-lg">Up to 24' Long</p>
                </div>
                <div className="space-y-2">
                   <p className="font-sans font-bold uppercase tracking-widest text-[10px] text-cypress-amber">Dimensions</p>
-                  <p className="text-mahogany font-serif text-lg">4x4 to 12x12+</p>
+                  <p className="text-mahogany font-serif text-lg">4×4 to 12×12+</p>
                </div>
             </div>
          </FadeUp>
-         <FadeUp delay={0.2} className="relative aspect-square">
-            <img src={IMGS.beamsDetail} className="w-full h-full object-cover shadow-2xl" alt="Cypress structural posts on porch" />
-         </FadeUp>
+         <div className="space-y-4">
+            <FadeUp delay={0.1}>
+               <img src={IMGS.beamsHero} className="w-full aspect-[4/3] object-cover shadow-2xl border-b-2 border-cypress-amber" alt="Cypress posts and beams install" />
+            </FadeUp>
+            <div className="grid grid-cols-2 gap-4">
+               <FadeUp delay={0.2}>
+                  <img src={IMGS.beamsDetail} className="w-full aspect-square object-cover shadow-xl border-b-2 border-cypress-amber" alt="Cypress structural beam detail" />
+               </FadeUp>
+               <FadeUp delay={0.3}>
+                  <img src={IMGS.beamsExtra} className="w-full aspect-square object-cover shadow-xl border-b-2 border-cypress-amber" alt="Cypress beams installed" />
+               </FadeUp>
+            </div>
+         </div>
       </section>
       <StickyCallBar />
     </div>
@@ -240,9 +262,13 @@ export function WallsCeilings() {
         <h1 className="relative text-6xl md:text-8xl font-display text-cypress-amber drop-shadow-2xl">Walls &amp; Ceilings</h1>
       </section>
       <section className="max-w-7xl mx-auto py-24 px-4 md:px-8 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-         <div className="relative aspect-video lg:aspect-square order-2 lg:order-1">
-            <img src={IMGS.wallsDetail} className="w-full h-full object-cover shadow-2xl border-l-[1rem] border-mahogany" alt="Cypress interior ceiling" />
-         </div>
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+           {[IMGS.wallsHero, IMGS.wallsDetail, IMGS.wallsA, IMGS.wallsB].map((img, i) => (
+             <FadeUp key={i} delay={i * 0.1}>
+                <img src={img} className="w-full aspect-square object-cover border-b-2 border-cypress-amber shadow-xl" alt={`Cypress wall & ceiling ${i + 1}`} />
+             </FadeUp>
+           ))}
+        </div>
          <FadeUp className="space-y-8 order-1 lg:order-2">
             <h2 className="text-4xl font-serif text-mahogany">Warmth in Every Plank</h2>
             <p className="text-xl text-charred-edge leading-relaxed">

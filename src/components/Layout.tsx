@@ -7,14 +7,16 @@ const navLinks = [
   { name: 'Home', path: '/' },
   { name: 'Why Cypress', path: '/why-cypress' },
   { name: 'Products', path: '/browse-all', dropdown: [
-    { name: 'Flooring', path: '/product/flooring' },
-    { name: 'Hunting Blinds', path: '/product/hunting-blinds' },
-    { name: 'Lumber', path: '/product/lumber' },
-    { name: 'Mantels', path: '/product/mantels' },
-    { name: 'Posts & Beams', path: '/product/posts-beams' },
-    { name: 'Tongue & Groove', path: '/product/tongue-groove' },
+    { name: 'Browse All',       path: '/browse-all' },
+    { name: 'Flooring',         path: '/product/flooring' },
+    { name: 'Hunting Blinds',   path: '/product/hunting-blinds' },
+    { name: 'Lumber',           path: '/product/lumber' },
+    { name: 'Mantels',          path: '/product/mantels' },
+    { name: 'Posts & Beams',    path: '/product/posts-beams' },
+    { name: 'Tongue & Groove',  path: '/product/tongue-groove' },
     { name: 'Walls & Ceilings', path: '/product/walls-ceilings' },
   ]},
+  { name: 'Browse Wood', path: '/browse-wood' },
   { name: 'Gallery', path: '/gallery' },
   { name: 'New Location', path: '/new-location' },
 ];
@@ -132,7 +134,7 @@ export function Layout({ children }: { children: ReactNode }) {
           </div>
         </div>
         <div className="text-mahogany/25 font-bold uppercase text-[9px] tracking-[0.3em]">
-          Est. Generation 04
+          Louisiana Cypress · Since 1980
         </div>
       </div>
       
@@ -142,6 +144,14 @@ export function Layout({ children }: { children: ReactNode }) {
           <div className="space-y-4 md:col-span-2 lg:col-span-1">
             <h2 className="text-3xl font-display text-antique-cream">Acadiana Cypress</h2>
             <p className="leading-relaxed text-antique-cream/70">Custom milled in South Louisiana. Since the dawn of the swamp, cypress has been the King of Lumber.</p>
+            <div className="flex items-center space-x-4 pt-2">
+              <a href="https://www.facebook.com/profile.php?id=100076284221092" target="_blank" rel="noopener noreferrer" className="text-antique-cream/50 hover:text-cypress-amber transition-colors" aria-label="Facebook">
+                <Facebook size={20} />
+              </a>
+              <a href="mailto:codycoco_1@yahoo.com" className="text-antique-cream/50 hover:text-cypress-amber transition-colors text-[10px] uppercase tracking-widest font-bold">
+                codycoco_1@yahoo.com
+              </a>
+            </div>
           </div>
           <div className="space-y-4">
             <h3 className="font-serif text-base border-b border-cypress-amber/60 pb-1 inline-block">Products</h3>
@@ -149,6 +159,7 @@ export function Layout({ children }: { children: ReactNode }) {
               {navLinks.find(l => l.name === 'Products')?.dropdown?.map(p => (
                 <li key={p.path}><Link to={p.path} className="hover:text-cypress-amber transition-colors">{p.name}</Link></li>
               ))}
+              <li><Link to="/browse-wood" className="hover:text-cypress-amber transition-colors">Browse Wood</Link></li>
             </ul>
           </div>
           <div className="space-y-4">
@@ -158,7 +169,7 @@ export function Layout({ children }: { children: ReactNode }) {
           </div>
           <div className="space-y-4">
             <h3 className="font-serif text-base border-b border-cypress-amber/60 pb-1 inline-block">Grand Coteau Store</h3>
-            <p className="leading-relaxed text-antique-cream/70">I-49 South Service Rd,<br />Grand Coteau, LA 70451</p>
+            <p className="leading-relaxed text-antique-cream/70">I-49 South Service Rd,<br />Grand Coteau, LA 70541</p>
             <p className="text-[11px] uppercase tracking-widest font-bold text-cypress-amber">(318) 240-3874</p>
           </div>
         </div>

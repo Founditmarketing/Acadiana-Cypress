@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Layout } from './components/Layout';
 import Home from './pages/Home';
 import { WhyCypress, BrowseAll } from './pages/ProductHubs';
+import BrowseWood from './pages/BrowseWood';
 import { 
   Flooring, 
   HuntingBlinds, 
@@ -26,6 +27,7 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/why-cypress" element={<WhyCypress />} />
           <Route path="/browse-all" element={<BrowseAll />} />
+          <Route path="/browse-wood" element={<BrowseWood />} />
           <Route path="/product/flooring" element={<Flooring />} />
           <Route path="/product/hunting-blinds" element={<HuntingBlinds />} />
           <Route path="/product/lumber" element={<Lumber />} />
