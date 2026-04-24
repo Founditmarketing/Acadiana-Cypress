@@ -1,37 +1,100 @@
-@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --color-cypress-amber: #D46A25;
-  --color-milled-glow: #E28C40;
-  --color-mahogany: #2A1308;
-  --color-antique-cream: #FAF4EB;
-  --color-charred-edge: #4A2B1B;
+  --color-cypress-amber:  #D46A25;
+  --color-milled-glow:    #E28C40;
+  --color-mahogany:       #1E0D04;
+  --color-deep-mahogany:  #0C0401;
+  --color-antique-cream:  #FAF4EB;
+  --color-charred-edge:   #3D2010;
 
   --font-display: "Great Vibes", cursive;
-  --font-serif: "Playfair Display", serif;
-  --font-sans: "Lato", sans-serif;
+  --font-serif:   "Playfair Display", serif;
+  --font-sans:    "Space Grotesk", sans-serif;
 }
 
 @layer base {
+  html { scroll-behavior: smooth; }
+
   body {
-    @apply bg-antique-cream text-charred-edge font-sans selection:bg-cypress-amber/30;
+    @apply bg-antique-cream text-charred-edge font-sans;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  *::selection {
+    background: rgba(212, 106, 37, 0.3);
+    color: #1E0D04;
   }
 
   h1, h2, h3, h4, h5, h6 {
     @apply font-serif font-bold text-mahogany;
   }
-
-  .font-display {
-    @apply font-display;
-  }
 }
 
+/* ─── MARQUEE ──────────────────────────── */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 32s linear infinite;
+}
+.marquee-track:hover { animation-play-state: paused; }
+
+/* ─── MARQUEE SLOW ─────────────────────── */
+.marquee-slow {
+  animation-duration: 55s;
+}
+
+/* ─── GRAIN ────────────────────────────── */
+.grain::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 2;
+  mix-blend-mode: overlay;
+}
+
+/* ─── NAV STATES ───────────────────────── */
+.nav-transparent {
+  background: transparent;
+  border-bottom: 1px solid rgba(212, 106, 37, 0.0);
+  transition: background 0.6s ease, border-color 0.6s ease;
+}
+.nav-solid {
+  background: rgba(12, 4, 1, 0.92);
+  border-bottom: 1px solid rgba(212, 106, 37, 0.2);
+  backdrop-filter: blur(20px);
+  transition: background 0.6s ease, border-color 0.6s ease;
+}
+
+/* ─── NAV UNDERLINE SLIDE ──────────────── */
+.nav-link { position: relative; }
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px; left: 0;
+  width: 0; height: 1px;
+  background: #D46A25;
+  transition: width 0.35s ease;
+}
+.nav-link:hover::after, .nav-link.active::after { width: 100%; }
+
+/* ─── UTILITIES ────────────────────────── */
 @layer utilities {
   .text-glow {
-    text-shadow: 0 0 20px rgba(226, 140, 64, 0.3);
+    text-shadow: 0 0 60px rgba(212, 106, 37, 0.5);
   }
-  .bg-hero-gradient {
-    background: radial-gradient(circle at center, var(--color-milled-glow) 0%, var(--color-mahogany) 100%);
+  .text-glow-lg {
+    text-shadow: 0 0 100px rgba(212, 106, 37, 0.35), 0 0 200px rgba(212, 106, 37, 0.15);
+  }
+  .perspective-1200 {
+    perspective: 1200px;
   }
 }
